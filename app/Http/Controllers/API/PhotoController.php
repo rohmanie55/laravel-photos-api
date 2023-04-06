@@ -31,13 +31,13 @@ class PhotoController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'file'    => 'required|image|max:2048',
+            'file'    => 'required|image|max:5120',
             'caption' => 'required|max:500',
             'tags'    => 'nullable|array'
         ]);
-        $path = 'public/'.md5(auth()->id());
+        $path = md5(auth()->id());
 
-        $request->file('file')->store($path);
+        $request->file('file')->storePublicly($path);
 
         $photo = new Photo();
         $photo->path = $path;
@@ -89,7 +89,7 @@ class PhotoController extends Controller
         PhotoLike::where('photo_id', $id)
                                 ->where('user_id', auth()->id())
                                 ->delete();
-                                
+
         return response()->noContent();
     }
 }
