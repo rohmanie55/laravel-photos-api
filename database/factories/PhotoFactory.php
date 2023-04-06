@@ -17,13 +17,15 @@ class PhotoFactory extends Factory
      */
     public function definition()
     {
+        $user = User::factory()->create();
+
         return [
-            'path'=>fake()->imageUrl(480, 480),
+            'path'=>md5($user->id),
             'file_name'=>md5(time()).'.'.fake()->randomElement(['jpg','png','webp']),
             'size' => fake()->randomNumber(5),
             'caption'=> fake()->sentence(),
-            'tags' => fake()->randomElement(fake()->words(5)),
-            'user_id'=>User::factory()->create()->id
+            'tags' => fake()->randomElements(fake()->words(5)),
+            'user_id'=>$user->id
         ];
     }
 }

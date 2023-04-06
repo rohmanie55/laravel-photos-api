@@ -30,7 +30,7 @@ Route::group(['prefix'=>'v1'], function(){
 
     Route::controller(PhotoController::class)->group(function () {
         Route::get('/photos', 'index')->name('photo.index');
-        Route::get('/photos/{photo}', 'store')->name('photo.show');
+        Route::get('/photos/{photo}', 'show')->name('photo.show');
 
         Route::middleware('auth:api')->group(function () {
             Route::post('/photos', 'store')->name('photo.store');
