@@ -54,6 +54,6 @@ php artisan serve
 2. Visit the URL in your browser: `http://localhost:8000`
 
 ## API Endpoints
-https://github.com/rohmanie55/laravel-photos-api/photos.postman_collection.json
+https://github.com/rohmanie55/laravel-photos-api/blob/master/photos.postman_collection.json
 
 
